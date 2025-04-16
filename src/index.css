@@ -1,0 +1,356 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --primary-color: #00838f;
+  --secondary-color: #1565c0;
+  --accent-light: #4fc3f7;
+  --animation-speed: 0.3s;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.85);
+  --text-tertiary: rgba(255, 255, 255, 0.7);
+  --error-color: #ff5252;
+  --success-color: #4caf50;
+}
+
+a {
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: inherit;
+  transition: color var(--animation-speed) ease;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #0a1929 0%, #00838f 100%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: 2.5em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all var(--animation-speed);
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+button:active::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}
+
+/* Remove default Material UI CssBaseline styles that conflict */
+#root {
+  width: 100%;
+}
+
+/* App container for all pages */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Logo styling */
+.app-logo {
+  width: 100px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.app-logo:hover {
+  transform: scale(1.05);
+}
+
+.app-logo svg {
+  width: 50px;
+  height: 50px;
+  color: white;
+}
+
+/* Title styling */
+.app-title {
+  font-size: 2.6rem !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
+  color: white !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.app-subtitle {
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 4px !important;
+  margin-top: 0 !important;
+  margin-bottom: 30px !important;
+  color: var(--text-secondary) !important;
+}
+
+/* Form container */
+.form-container {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 12px !important;
+  width: 100%;
+  max-width: 400px;
+  padding: 30px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Input styling */
+.MuiFilledInput-root {
+  border-radius: 8px !important;
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  transition: background-color 0.3s ease;
+}
+
+.MuiFilledInput-root:hover {
+  background-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+.MuiFilledInput-root.Mui-focused {
+  background-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+.MuiInputLabel-root {
+  color: var(--text-secondary) !important;
+  font-weight: 500 !important;
+}
+
+.MuiInputLabel-root.Mui-focused {
+  color: white !important;
+}
+
+.MuiFilledInput-input {
+  color: white !important;
+}
+
+/* Form helper text and error messages */
+.MuiFormHelperText-root {
+  color: var(--text-secondary) !important;
+  font-size: 0.85rem !important;
+  margin-top: 4px !important;
+}
+
+.MuiFormHelperText-root.Mui-error {
+  color: var(--error-color) !important;
+}
+
+/* Alert styling for better readability */
+.MuiAlert-root {
+  border-radius: 8px !important;
+}
+
+.MuiAlert-standardError {
+  background-color: rgba(244, 67, 54, 0.15) !important;
+  color: #ffb8b8 !important;
+}
+
+.MuiAlert-standardSuccess {
+  background-color: rgba(76, 175, 80, 0.15) !important;
+  color: #b3ffb6 !important;
+}
+
+/* Typography elements */
+.MuiTypography-root {
+  color: var(--text-primary);
+}
+
+.MuiTypography-body2 {
+  color: var(--text-secondary);
+}
+
+/* Table text for better readability */
+.MuiTableCell-root {
+  color: var(--text-primary) !important;
+}
+
+.MuiTableCell-head {
+  font-weight: 600 !important;
+}
+
+/* Footer styling */
+.app-footer {
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+  margin-top: auto;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  transition: opacity 0.3s ease;
+}
+
+.app-footer:hover {
+  opacity: 1;
+}
+
+.app-footer a {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Footer link styling */
+.footer-link {
+  position: relative;
+}
+
+.footer-link:hover {
+  color: var(--accent-light) !important;
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--accent-light);
+  transition: width var(--animation-speed) ease;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+/* Mobile optimizations */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 15px;
+    justify-content: flex-start;
+    padding-top: 60px;
+  }
+  
+  .app-logo {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+  
+  .app-logo svg {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .app-title {
+    font-size: 2rem !important;
+  }
+  
+  .app-subtitle {
+    font-size: 1rem !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .form-container {
+    padding: 20px !important;
+    margin-bottom: 40px;
+  }
+  
+  button {
+    padding: 0.8em 1.2em;
+    width: 100%;
+  }
+}
+
+/* Small animation classes that can be applied to any element */
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease forwards;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
